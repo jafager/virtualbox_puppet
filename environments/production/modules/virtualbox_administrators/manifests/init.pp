@@ -8,8 +8,8 @@ class virtualbox_administrators
 
     file { '/etc/sudoers.d/admins':
         ensure => present,
-        owner => jafager,
-        group => jafager,
+        owner => root,
+        group => root,
         mode => '0644',
         content => '%admins ALL=(ALL) NOPASSWD: ALL',
     }
