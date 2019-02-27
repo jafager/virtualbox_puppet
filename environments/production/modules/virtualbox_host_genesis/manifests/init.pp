@@ -9,4 +9,13 @@ class virtualbox_host_genesis
         ensure => present,
     }
 
+    file { '/etc/dhcp/dhcpd.conf':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => '0644',
+        source => 'puppet:///modules/virtualbox_host_genesis/etc_dhcp_dhcpd_conf',
+        require => Package['dhcp'],
+    }
+
 }
