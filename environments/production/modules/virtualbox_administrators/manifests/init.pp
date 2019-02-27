@@ -108,4 +108,12 @@ class virtualbox_administrators
         require => File['/home/jafager'],
     }
 
+    file { '/usr/local/bin/abbreviate_cwd':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => '0755',
+        source => 'puppet:///modules/virtualbox_administrators/usr_local_bin_abbreviate_cwd',
+    }
+
 }
