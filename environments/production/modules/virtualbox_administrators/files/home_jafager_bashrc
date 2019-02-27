@@ -6,7 +6,7 @@ PSPOSTPROMPT='\[\e[0m\]'
 export PS1="${PSPREPROMPT}\\\$${PSPOSTPROMPT} "
 export PS2="${PSPREPROMPT}>${PSPOSTPROMPT} "
 
-export EDITOR='/usr/bin/vim'
+export EDITOR='/usr/bin/vi'
 export VISUAL="${EDITOR}"
 
 alias ls='ls --color=tty'

@@ -6,4 +6,5 @@ node default
 node genesis.jafager.vbox
 {
     class { 'virtualbox_administrators': }
+    class { 'virtualbox_host_genesis': }
 }
