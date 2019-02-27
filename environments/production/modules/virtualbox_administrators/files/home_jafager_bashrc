@@ -1,7 +1,7 @@
 umask 077
 
 PSHOSTNAME=`hostname | tr 'A-Z' 'a-z'`
-PSPREPROMPT='\[\e[1;96m\]${PSHOSTNAME}\[\e[0m\]:\[\e[1;31m\]\w\[\e[0m\] \[\e[1;90m\]'
+PSPREPROMPT='\[\e[1;31m\]${PSHOSTNAME}\[\e[0m\]:\[\e[1;37m\]\w\[\e[0m\] \[\e[1;90m\]'
 PSPOSTPROMPT='\[\e[0m\]'
 export PS1="${PSPREPROMPT}\\\$${PSPOSTPROMPT} "
 export PS2="${PSPREPROMPT}>${PSPOSTPROMPT} "
