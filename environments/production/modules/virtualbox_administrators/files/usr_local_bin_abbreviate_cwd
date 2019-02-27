@@ -1,0 +1,30 @@
+#!/usr/bin/perl -T
+
+
+use strict;
+use warnings;
+
+use Cwd;
+
+
+my $cwd = getcwd();
+$cwd =~ s#^/##;
+my @cwd = split '/', $cwd;
+
+my $prompt = '/';
+
+while (scalar @cwd > 0)
+{
+    my $path = shift @cwd;
+    if (scalar @cwd > 0)
+    {
+        $prompt .= substr $path, 0, 1;
+        $prompt .= '/';
+    }
+    else
+    {
+        $prompt .= $path;
+    }
+}
+
+print $prompt;
