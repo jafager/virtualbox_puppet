@@ -6,6 +6,14 @@ class virtualbox_administrators
         gid => 2100,
     }
 
+    file { '/etc/sudoers.d/admins':
+        ensure => present,
+        owner => jafager,
+        group => jafager,
+        mode => '0644',
+        content => '%admins ALL=(ALL) NOPASSWD: ALL',
+    }
+
     group { 'jafager':
         ensure => present,
         gid => 1100,
@@ -61,6 +69,33 @@ class virtualbox_administrators
         group => jafager,
         mode => '0600',
         content => '',
+        require => File['/home/jafager'],
+    }
+
+    file { '/home/jafager/.bash_logout':
+        ensure => present,
+        owner => jafager,
+        group => jafager,
+        mode => '0600',
+        content => '',
+        require => File['/home/jafager'],
+    }
+
+    file { '/home/jafager/.bash_login':
+        ensure => present,
+        owner => jafager,
+        group => jafager,
+        mode => '0600',
+        content => 'source ~/.bashrc',
+        require => File['/home/jafager'],
+    }
+
+    file { '/home/jafager/.bashrc':
+        ensure => present,
+        owner => jafager,
+        group => jafager,
+        mode => '0600',
+        source => 'puppet:///modules/virtualbox_administrators/home_jafager_bashrc',
         require => File['/home/jafager'],
     }
 

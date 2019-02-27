@@ -1,0 +1,15 @@
+umask 077
+
+PSHOSTNAME=`hostname | tr 'A-Z' 'a-z'`
+PSPREPROMPT='\[\e[1;96m\]${PSHOSTNAME}\[\e[0m\]:\[\e[1;31m\]\w\[\e[0m\] \[\e[1;90m\]'
+PSPOSTPROMPT='\[\e[0m\]'
+export PS1="${PSPREPROMPT}\\\$${PSPOSTPROMPT} "
+export PS2="${PSPREPROMPT}>${PSPOSTPROMPT} "
+
+export EDITOR='/usr/bin/vim'
+export VISUAL="${EDITOR}"
+
+alias ls='ls --color=tty'
+
+PATHHOME=`echo ~`
+export PATH="${PATHHOME}/local/bin:${PATHHOME}/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
