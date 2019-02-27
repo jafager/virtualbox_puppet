@@ -99,4 +99,13 @@ class virtualbox_administrators
         require => File['/home/jafager'],
     }
 
+    file { '/home/jafager/.vimrc':
+        ensure => present,
+        owner => jafager,
+        group => jafager,
+        mode => '0600',
+        source => 'puppet:///modules/virtualbox_administrators/home_jafager_vimrc',
+        require => File['/home/jafager'],
+    }
+
 }
