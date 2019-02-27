@@ -55,6 +55,24 @@ class virtualbox_administrators
         require => File['/home/jafager'],
     }
 
+    file { '/home/jafager/.ssh/id_rsa':
+        ensure => present,
+        owner => jafager,
+        group => jafager,
+        mode => '0600',
+        source => 'puppet:///modules/virtualbox_administrators/home_jafager_ssh_id_rsa',
+        require => File['/home/jafager/.ssh'],
+    }
+
+    file { '/home/jafager/.ssh/id_rsa.pub':
+        ensure => present,
+        owner => jafager,
+        group => jafager,
+        mode => '0600',
+        source => 'puppet:///modules/virtualbox_administrators/home_jafager_ssh_id_rsa_pub',
+        require => File['/home/jafager/.ssh'],
+    }
+
     ssh_authorized_key { 'jafager@PRISM':
         ensure => present,
         user => 'jafager',
