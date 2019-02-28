@@ -37,4 +37,19 @@ class virtualbox_host_genesis
         require => Package['xinetd'],
     }
 
+    file { '/etc/xinetd.d/tftp':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => '0644',
+        source => 'puppet:///modules/virtualbox_host_genesis/etc_xinetd_d_tftp',
+        require => Package['tftp-server'],
+    }
+
+    service { 'xinetd':
+        ensure => running,
+        enable => true,
+        subscribe => File['/etc/xinetd.d/tftp'],
+    }
+
 }
