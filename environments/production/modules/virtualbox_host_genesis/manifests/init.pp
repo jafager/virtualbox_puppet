@@ -110,7 +110,7 @@ class virtualbox_host_genesis
     }
 
     service { 'httpd':
-        ensure => present,
+        ensure => running,
         enable => true,
         require => Package['httpd'],
     }
