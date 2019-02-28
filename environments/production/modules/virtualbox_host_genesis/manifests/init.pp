@@ -52,4 +52,10 @@ class virtualbox_host_genesis
         subscribe => File['/etc/xinetd.d/tftp'],
     }
 
+    exec { 'add tftp service to firewalld':
+        command => 'firewall-cmd --permanent --add-service=tftp; firewall-cmd --reload',
+        unless => 'firewall-cmd --list-services | egrep \'(^| )tftp( |$)\'',
+        refreshonly => true,
+    }
+
 }
