@@ -24,4 +24,17 @@ class virtualbox_host_genesis
         subscribe => File['/etc/dhcp/dhcpd.conf'],
     }
 
+    ###
+    ### TFTP
+    ###
+
+    package { 'xinetd':
+        ensure => present,
+    }
+
+    package { 'tftp-server':
+        ensure => present,
+        require => Package['xinetd'],
+    }
+
 }
