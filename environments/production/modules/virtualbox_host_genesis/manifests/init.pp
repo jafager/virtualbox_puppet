@@ -75,11 +75,29 @@ class virtualbox_host_genesis
     }
 
     file { '/var/lib/tftpboot/pxelinux.cfg/default':
-        ensure => directory,
+        ensure => present,
         owner => root,
         group => root,
         mode => '0644',
         source => 'puppet:///modules/virtualbox_host_genesis/var_lib_tftpboot_pxelinux_cfg_default',
+        require => File['/var/lib/tftpboot/pxelinux.cfg'],
+    }
+
+    file { '/var/lib/tftpboot/centos7_vmlinuz':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => '0644',
+        source => 'puppet:///modules/virtualbox_host_genesis/var_lib_tftpboot_centos7_vmlinuz',
+        require => File['/var/lib/tftpboot/pxelinux.cfg'],
+    }
+
+    file { '/var/lib/tftpboot/centos7_initrd_img':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => '0644',
+        source => 'puppet:///modules/virtualbox_host_genesis/var_lib_tftpboot_centos7_initrd_img',
         require => File['/var/lib/tftpboot/pxelinux.cfg'],
     }
 
