@@ -1,0 +1,9 @@
+DEFAULT menu.c32
+PROMPT 0
+
+MENU TITLE VirtualBox Deployment
+
+LABEL CentOS 7
+    MENU LABEL CentOS 7
+    KERNEL centos7_vmlinuz
+    APPEND initrd=centos7_initrd_img

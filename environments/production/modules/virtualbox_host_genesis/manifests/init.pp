@@ -58,4 +58,29 @@ class virtualbox_host_genesis
         unless => 'firewall-cmd --list-services | egrep \'(^| )tftp( |$)\'',
     }
 
+    ###
+    ### PXE
+    ###
+
+    package { 'syslinux-tftpboot':
+        ensure => present,
+    }
+
+    file { '/var/lib/tftpboot/pxelinux.cfg':
+        ensure => directory,
+        owner => root,
+        group => root,
+        mode => '0755',
+        require => Package['syslinux-tftpboot'],
+    }
+
+    file { '/var/lib/tftpboot/pxelinux.cfg/default':
+        ensure => directory,
+        owner => root,
+        group => root,
+        mode => '0644',
+        source => 'puppet:///modules/virtualbox_host_genesis/var_lib_tftpboot_pxelinux_cfg_default',
+        require => File['/var/lib/tftpboot/pxelinux.cfg'],
+    }
+
 }
