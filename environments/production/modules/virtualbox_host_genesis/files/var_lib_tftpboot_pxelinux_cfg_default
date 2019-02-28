@@ -6,4 +6,4 @@ MENU TITLE VirtualBox Deployment
 LABEL CentOS 7
     MENU LABEL CentOS 7
     KERNEL centos7_vmlinuz
-    APPEND initrd=centos7_initrd_img
+    APPEND initrd=centos7_initrd_img inst.ks=http://192.168.254.1/centos7.ks
