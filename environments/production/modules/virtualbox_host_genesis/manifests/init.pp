@@ -115,6 +115,12 @@ class virtualbox_host_genesis
         require => Package['httpd'],
     }
 
+    exec { 'add http service to firewalld':
+        command => 'firewall-cmd --permanent --add-service=http; firewall-cmd --reload',
+        path => '/usr/bin',
+        unless => 'firewall-cmd --list-services | egrep \'(^| )http( |$)\'',
+    }
+
     file { '/var/www/html/centos7':
         ensure => directory,
         owner => root,
@@ -125,10 +131,13 @@ class virtualbox_host_genesis
         require => Package['httpd'],
     }
 
-    exec { 'add http service to firewalld':
-        command => 'firewall-cmd --permanent --add-service=http; firewall-cmd --reload',
-        path => '/usr/bin',
-        unless => 'firewall-cmd --list-services | egrep \'(^| )http( |$)\'',
+    file { '/var/www/html/centos7.ks':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => '0644',
+        source => 'puppet:///modules/virtualbox_host_genesis/var_www_html_centos7_ks',
+        require => Package['httpd'],
     }
 
 }
