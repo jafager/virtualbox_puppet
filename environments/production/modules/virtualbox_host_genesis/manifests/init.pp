@@ -125,4 +125,10 @@ class virtualbox_host_genesis
         require => Package['httpd'],
     }
 
+    exec { 'add http service to firewalld':
+        command => 'firewall-cmd --permanent --add-service=http; firewall-cmd --reload',
+        path => '/usr/bin',
+        unless => 'firewall-cmd --list-services | egrep \'(^| )http( |$)\'',
+    }
+
 }
