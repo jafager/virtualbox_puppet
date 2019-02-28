@@ -13,3 +13,5 @@ alias ls='ls --color=tty'
 
 PATHHOME=`echo ~`
 export PATH="${PATHHOME}/local/bin:${PATHHOME}/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+
+alias pup='git add ~/virtualbox_puppet; git commit; git push; sudo su -l -c "cd /etc/puppetlabs/code && git pull && puppet agent --test"'
