@@ -101,4 +101,28 @@ class virtualbox_host_genesis
         require => File['/var/lib/tftpboot/pxelinux.cfg'],
     }
 
+    ###
+    ### HTTP
+    ###
+
+    package { 'httpd':
+        ensure => present,
+    }
+
+    service { 'httpd':
+        ensure => present,
+        enable => true,
+        require => Package['httpd'],
+    }
+
+    file { '/var/www/html/centos7':
+        ensure => directory,
+        owner => root,
+        group => root,
+        mode => '0755',
+        source => '',
+        recurse => true,
+        require => Package['httpd'],
+    }
+
 }
