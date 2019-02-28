@@ -56,7 +56,6 @@ class virtualbox_host_genesis
         command => 'firewall-cmd --permanent --add-service=tftp; firewall-cmd --reload',
         path => '/usr/bin',
         unless => 'firewall-cmd --list-services | egrep \'(^| )tftp( |$)\'',
-        refreshonly => true,
     }
 
 }
