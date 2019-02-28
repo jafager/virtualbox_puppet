@@ -120,7 +120,7 @@ class virtualbox_host_genesis
         owner => root,
         group => root,
         mode => '0755',
-        source => '',
+        source => 'puppet:///modules/virtualbox_host_genesis/var_www_html_centos7',
         recurse => true,
         require => Package['httpd'],
     }
