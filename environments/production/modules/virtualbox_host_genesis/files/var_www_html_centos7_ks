@@ -5,7 +5,7 @@ auth
 zerombr
 clearpart --all --initlabel
 bootloader --location=mbr
-url --url=http://192.168.254.1/centos7
+url --url=http://192.168.254.2/centos7
 selinux --enforcing
 timezone --utc America/New_York
 part /boot --size=1024 --asprimary --fstype=xfs
