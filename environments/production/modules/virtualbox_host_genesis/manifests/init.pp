@@ -126,7 +126,7 @@ class virtualbox_host_genesis
         owner => root,
         group => root,
         mode => '0755',
-        source => 'puppet:///modules/virtualbox_host_genesis/var_www_html_centos7',
+        source => 'http://mirror.centos.org/centos-7/7/os/x86_64',
         recurse => true,
         require => Package['httpd'],
     }
