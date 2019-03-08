@@ -126,9 +126,18 @@ class virtualbox_host_genesis
         owner => root,
         group => root,
         mode => '0755',
-        source => 'http://mirror.centos.org/centos-7/7/os/x86_64',
+        source => 'puppet:///modules/virtualbox_host_genesis/var_www_html_centos7',
         recurse => true,
         require => Package['httpd'],
+    }
+
+    file { '/var/www/html/centos7/LiveOS/squashfs.img':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => '0644',
+        source => 'http://mirror.centos.org/centos-7/7/os/x86_64/LiveOS/squashfs.img',
+        require => File['/var/www/html/centos7'],
     }
 
     file { '/var/www/html/centos7.ks':
