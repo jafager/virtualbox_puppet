@@ -131,13 +131,21 @@ class virtualbox_host_genesis
         require => Package['httpd'],
     }
 
+    file { '/var/www/html/centos7/LiveOS':
+        ensure => directory,
+        owner => root,
+        group => root,
+        mode => '0755',
+        require => File['/var/www/html/centos7'],
+    }
+
     file { '/var/www/html/centos7/LiveOS/squashfs.img':
         ensure => present,
         owner => root,
         group => root,
         mode => '0644',
         source => 'http://mirror.centos.org/centos-7/7/os/x86_64/LiveOS/squashfs.img',
-        require => File['/var/www/html/centos7'],
+        require => File['/var/www/html/centos7/LiveOS'],
     }
 
     file { '/var/www/html/centos7.ks':
