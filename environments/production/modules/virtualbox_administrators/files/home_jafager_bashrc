@@ -15,3 +15,5 @@ PATHHOME=`echo ~`
 export PATH="${PATHHOME}/local/bin:${PATHHOME}/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 alias pup='git add --all ~/virtualbox_puppet; git commit; git push; sudo su -l -c "cd /etc/puppetlabs/code && git pull && puppet agent --test"'
+
+bind 'set match-hidden-files off'
